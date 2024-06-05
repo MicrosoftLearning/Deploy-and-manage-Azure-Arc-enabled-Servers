@@ -16,11 +16,11 @@ Your organization has a hybrid environment consisting of servers hosted in its o
 After completing this lab, you will be able to:
 
 - [Onboard on-premises Windows servers to Azure Arc](https://github.com/MicrosoftLearning/Deploy-and-manage-Azure-Arc-enabled-Servers/blob/master/Instructions/Labs/LAB_01_manage_windows_servers_using_azure_arc.md#exercise-1-onboard-windows-servers-to-azure-arc) 
-- Manage on-premises Windows servers by using Azure Arc and Azure Policy
-- Protect on-premises Windows servers by using Microsoft Defender for Cloud
-- Monitor on-premises Windows servers by using Azure Monitor
-- Update on-premises Windows servers by using Azure Update Manager
-- Configure on-premises Windows servers by using Azure VM extensions and azcmagent CLI
+- [Manage on-premises Windows servers by using Azure Arc and Azure Policy](https://github.com/MicrosoftLearning/Deploy-and-manage-Azure-Arc-enabled-Servers/blob/master/Instructions/Labs/LAB_01_manage_windows_servers_using_azure_arc.md#exercise-2-manage-azure-arc-enabled-windows-servers-by-using-azure-policy)
+- [Protect on-premises Windows servers by using Microsoft Defender for Cloud](https://github.com/MicrosoftLearning/Deploy-and-manage-Azure-Arc-enabled-Servers/blob/master/Instructions/Labs/LAB_01_manage_windows_servers_using_azure_arc.md#exercise-3-enhance-security-of-azure-arc-enabled-windows-servers-by-using-microsoft-defender-for-cloud)
+- [Monitor on-premises Windows servers by using Azure Monitor](https://github.com/MicrosoftLearning/Deploy-and-manage-Azure-Arc-enabled-Servers/blob/master/Instructions/Labs/LAB_01_manage_windows_servers_using_azure_arc.md#exercise-4-monitor-azure-arc-enabled-windows-servers-by-using-azure-monitor)
+- [Update on-premises Windows servers by using Azure Update Manager](https://github.com/MicrosoftLearning/Deploy-and-manage-Azure-Arc-enabled-Servers/blob/master/Instructions/Labs/LAB_01_manage_windows_servers_using_azure_arc.md#exercise-5-manage-updates-of-azure-arc-enabled-windows-servers-by-using-azure-update-manager)
+- [Configure on-premises Windows servers by using Azure VM extensions and azcmagent CLI](https://github.com/MicrosoftLearning/Deploy-and-manage-Azure-Arc-enabled-Servers/blob/master/Instructions/Labs/LAB_01_manage_windows_servers_using_azure_arc.md#exercise-6-configure-on-premises-windows-servers-by-using-azure-vm-extensions-and-azcmagent-cli)
 
 ## Lab duration
 
