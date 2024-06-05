@@ -15,7 +15,7 @@ Your organization has a hybrid environment consisting of servers hosted in its o
 
 After completing this lab, you will be able to:
 
-- Onboard on-premises Windows servers to Azure Arc 
+- [Onboard on-premises Windows servers to Azure Arc](https://github.com/MicrosoftLearning/Deploy-and-manage-Azure-Arc-enabled-Servers/blob/master/Instructions/Labs/LAB_01_manage_windows_servers_using_azure_arc.md#exercise-1-onboard-windows-servers-to-azure-arc) 
 - Manage on-premises Windows servers by using Azure Arc and Azure Policy
 - Protect on-premises Windows servers by using Microsoft Defender for Cloud
 - Monitor on-premises Windows servers by using Azure Monitor
