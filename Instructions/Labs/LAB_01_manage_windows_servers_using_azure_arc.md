@@ -91,6 +91,8 @@ In this task, you will deploy Azure compute resources that will be used to emula
     $location = '<Azure_region>'
     ```
 
+    > **Note**: Note: You can run the `(Get-AzLocation).Location` Azure PowerShell cmdlet to list the names of available Azure regions.
+
 1. Run the following command to create a resource group named **arclab-infra-RG** in the Azure region you chose:
 
     ```powershell
@@ -150,7 +152,11 @@ In this task, you will implement the operating system prerequisites for onboardi
 
 1. On the **arclab-winvm0** page, use the **Connect** menu option to connect to the Windows Server.
 
-    > **Note**: Use the **Connect** or **Connect via Bastion** option, depending on whether you included Azure Bastion in your deployment in the previous task.
+    > **Note**: Use the **Connect** or **Connect via Bastion** option, depending on whether you included Azure Bastion in your deployment in the previous task. 
+
+    > **Note**: When not using Azure Bastion, use the **Download RDP file** option to download and open the RDP file.
+
+    > **Note**: When using Azure Bastion, de-select the **Open in new browser tab** option to eliminate the potential impact of Microsoft Edge popup blocker.
 
 1. When prompted to authenticate, provide the **arclabadmin** username and the password you specified during the deployment.
 1. Within the Remote Desktop session to **arclab-winvm0**, from the Start menu, start **Windows PowerShell ISE**. 
@@ -312,7 +318,9 @@ In this task, you will connect a Windows Server to Azure Arc by using a service 
 
 1. When presented with the **Download service principal ID and secret** dialog box, select **Download and close**.
 
-   > **Important:** You will not be able to retrieve the client secret again after you close this dialog box.
+    > **Note:** Ensure that the newly created service principal is selected in the **Add multiple servers with Azure Arc** section before initiating download.
+
+    > **Important:** You will not be able to retrieve the client secret again after you close this dialog box.
 
 1. In the browser window, in the notification area, select **Open file** to open **servicePrincipal.txt** file containing the id and secret values of the newly created service principal.
 1. Back on the **Basics** tab of the **Add multiple servers with Azure Arc** page, select **Download and run script**.
@@ -321,9 +329,10 @@ In this task, you will connect a Windows Server to Azure Arc by using a service 
 
     > **Note:** For Windows, the script is named **OnboardingScript.ps1**.
 
-    > **Note:** The script establishes a connection to Azure Arc by using the **azcmagent** command and referencing the service principal you created. To successfully execute the command, you need to replace the `<ServicePrincipalId>` and `<ENTER SECRET HERE>` placeholders in line 3 and 4 (respectively) of the script with the values of the service principal id and secret, which you can find in the downloaded **servicePrincipal.txt** file.
+    > **Note:** The script establishes a connection to Azure Arc by using the **azcmagent** command and referencing the service principal you created. To successfully execute the command, you need to replace the `<ServicePrincipalId>` and `<ENTER SECRET HERE>` placeholders in line 29 and 30 (respectively) of the script with the values of the service principal id and secret, which you can find in the downloaded **servicePrincipal.txt** file.
+
 1. Switch to the **Administrator: Windows PowerShell ISE** window and open the downloaded **OnboardingScript.ps1** file.
-1. In the script pane of the **Administrator: Windows PowerShell ISE** window, replace the `<ServicePrincipalId>` and `<ENTER SECRET HERE>` placeholders in line 3 and 4 (respectively) of the script with the values of the service principal id and secret included in the downloaded **servicePrincipal.txt** file.
+1. In the script pane of the **Administrator: Windows PowerShell ISE** window, replace the `<ServicePrincipalId>` and `<ENTER SECRET HERE>` placeholders in line 29 and 30 (respectively) of the script with the values of the service principal id and secret included in the downloaded **servicePrincipal.txt** file.
 1. In **Administrator: Windows PowerShell ISE**, save the changes to the **OnboardingScript.ps1** file.
 1. From the console pane of the **Administrator: Windows PowerShell ISE** window, run the following command to allow running the downloaded script in environments where the RemoteSigned PowerShell execution policy is in place:
 
@@ -377,7 +386,6 @@ In this task, you will assign a built-in policy to the resource group containing
 1. On the **Configure Windows Arc-enabled machines to run Azure Monitor Agent** policy definition page, review the policy definition and available effects and then select **Assign policy**.
 1. On the **Basics** tab of the **Configure Windows Arc-enabled machines to run Azure Monitor Agent** policy assignment page, on the right side of the **Scope** text box, select the ellipsis button, in the **Scope** pane, in the **Subscription** drop-down list, select the Azure subscription you are using in this lab, in the **Resource Group** drop-down list, select **arclab-servers-RG**, followed by the **Select** button.
 1. Back on the **Basics** tab of the **Configure Windows Arc-enabled machines to run Azure Monitor Agent** policy assignment page, note that **Policy enforcement** is enabled by default and select **Next**.
-1. On the **Advanced** tab, review the available options without modifying them and then select **Next**.
 1. On the **Parameters** tab, select **Next**, since this policy definition does not include any parameters that need input or review.
 1. On the **Remediation** tab, select the **Create a remediation task** checkbox, ensure that **System assigned managed identity** option is selected, and then select **Next**.
 
@@ -412,7 +420,7 @@ In this task, you will review the results of the policy assignment.
     > **Note:** You might need to refresh the page to display the updated compliance status.
 
 1. To validate the results in another way, in the Azure portal, navigate back to the **Azure Arc \| Machines** page and select the **arclab-winvm1** entry.
-1. On the **arclab-winvm1** page, in the vertical navigation menu on the left side, select **Extensions** and verify that the **AzureMonitorWindowsAgent** appears on the list of installed extensions.
+1. On the **arclab-winvm1** page, in the vertical navigation menu on the left side, expand the **Settings** section, select **Extensions**, and verify that the **AzureMonitorWindowsAgent** appears on the list of installed extensions.
 
 ### Exercise 3: Enhance security of Azure Arc-enabled Windows servers by using Microsoft Defender for Cloud
 
@@ -551,9 +559,7 @@ In this exercise, you will:
 In this task, you will configure Update Manager for one of the Windows servers you onboarded to Azure Arc earlier in this lab. 
 
 1. Within the Remote Desktop session to **arclab-winvm1**, in the web browser window displaying the Azure portal, navigate to the **Azure Arc \| Machines** page and select the **arclab-winvm1** entry.
-1. On the **arclab-winvm1** page, in the vertical navigation menu on the left side, in the **Operations** section, select **Updates**.
-1. On the **arclab-winvm1 \| Updates** page, in the **Guest OS updates** section, select **Go to Updates by using Azure Update Manager**.
-1. On the **arclab-winvm1 \| Updates** page, select **Check for updates** and, in the **Trigger assess now**, select **OK**.
+1. On the **arclab-winvm1** page, select **Check for updates** and, in the **Trigger assess now**, select **OK**.
 
     > **Note:** Do not wait for the assessment to complete, but instead proceed to the next step. The assessment might take about 5 minutes to complete.
 
@@ -582,12 +588,12 @@ In this task, you will configure Update Manager for one of the Windows servers y
     |Repeats|**1 Week** on **Saturday**|
     |Add end date|disabled|
 
-1. Back on the **Basics** tab of the **Create a maintenance configuration** page, select **Next: Dynamic scopes >**:
-1. On the **Dynamic scopes** tab, select **Next: Resources >**.
+1. Back on the **Basics** tab of the **Create a maintenance configuration** page, select **Next: Resources >**.
+1. On the **Resources** tab, verify that **arclab-winvm1** appears in the list of resources and select **Next: Dynamic scopes >**.
+1. On the **Dynamic scopes** tab, select **Next: Updates >**.
 
     > **Note:** Dynamic scopes allow you to narrow down the scope of configuration by using such criteria as resource groups, locations, operating system types, or tags.
 
-1. On the **Resources** tab, verify that **arclab-winvm1** appears in the list of resources and select **Next: Updates >**.
 1. On the **Updates** tab, review the existing settings without making any changes and select **Review + create**.
 
     > **Note:** You have the option of including update classifications as well as including and excluding individual KB ID/packages.
