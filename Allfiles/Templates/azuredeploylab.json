@@ -292,7 +292,7 @@
                 "idleTimeoutInMinutes": 4
             },
             "sku": {
-                "name": "Basic"
+                "name": "Standard"
             }
         },
         {
